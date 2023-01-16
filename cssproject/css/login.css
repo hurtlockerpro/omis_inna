@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap');
+
+:root{
+    --main-bg-color: #ffc115;
+}
+
+body {
+    background-image: url("../img/bg2.jpg");
+    background-position: center;
+    background-size: cover;
+
+    margin: 0;
+
+
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+.loginBox {
+    width: 250px;
+    margin: auto;
+    
+    position: relative;
+}
+
+.loginBox::before{
+    content: '';
+    background-color: #12172e;
+    opacity: 0.5;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 4px;
+    /* border: 1px solid var(--main-bg-color); */
+}
+
+.fa-user {
+    color: var(--main-bg-color);
+    font-size: 50px;
+
+}
