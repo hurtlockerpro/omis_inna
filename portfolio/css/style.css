@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap');
+
+:root {
+    --main-dark-color: #414141;
+}
 
 *{
     font-family: Arial, Helvetica, sans-serif;
@@ -16,17 +21,49 @@ body {
     display: flex;
     flex-direction: row;
 }
-.colLeft{
+.colLeft {
     border: 1px solid gray;
     width: 20%;
     flex-grow: 1;
     text-align: center;
-    background-color: #414141;
+    background-color: var(--main-dark-color);
     color: white;
+    padding: 35px;
+}
+
+.colLeft > div:first-of-type {
+    text-align: justify;
+}
+
+.colLeft > div {
+    border-bottom: 1px solid gray;
+    text-align: left;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
 }
 
 .colLeft a {
     color: white;
+}
+
+.colLeft > div:last-of-type > .description {
+    display: flex;
+}
+
+.colLeft .description > div {
+    display: inline;
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.colLeft > div:last-of-type{
+    border: 0;
+}
+
+.colLeft .fa-solid {
+    font-size: 5px;
+    margin-right: 5px;
 }
 
 .colLeft h1 {
@@ -49,6 +86,76 @@ body {
 /* user photo */
 
 .userPhoto{
-    width: 60%;
+    width: 100%;
     border-radius: 50%;
+}
+
+/* RIGHT COL */
+.colRight {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid gray;
+    margin-top: 45px;
+}
+
+.firstname, .lastname {
+    font-size: 50px;
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    color: var(--main-dark-color);
+    margin: 0;
+    padding: 0;
+}
+.firstname {
+    letter-spacing: 11.5px;
+}
+.lastname {
+    position: relative;
+    top: -25px;
+}
+.profession {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: var(--main-dark-color);
+    position: relative;
+    top: -32px;
+}
+
+/* HEADER LINKS WITH ICONS */
+.hdrColRight {
+    position: relative;
+    top: 15px;
+}
+
+.hdrColRight a {
+    color: var(--main-dark-color);
+    text-decoration: none;
+    font-size: 16px;
+    margin-bottom: -10px;
+    display: block;
+}
+
+.map::before, .phone::before, .email::before{
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900;
+    margin-right: 5px;
+    width: 20px;
+    display: inline-flex;
+    justify-content: center;
+}
+.map::before{
+    content: '\f3c5';
+}
+.phone::before{
+    content: '\f095';
+}
+.email::before{
+    content: '\f0e0';
 }
