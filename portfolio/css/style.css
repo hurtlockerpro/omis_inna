@@ -2,6 +2,8 @@
 
 :root {
     --main-dark-color: #414141;
+    --header-color: #6c6c74;
+    --light-gray: #9c9ca4;
 }
 
 *{
@@ -20,6 +22,7 @@ body {
     width: 80%;
     display: flex;
     flex-direction: row;
+    height: 100vh;
 }
 .colLeft {
     border: 1px solid gray;
@@ -159,3 +162,47 @@ body {
 .email::before{
     content: '\f0e0';
 }
+
+/*  header */
+
+.titleGray {
+    text-transform: uppercase;
+    color: var(--header-color);
+}
+
+/* PROGRESS BAR */
+.progress{
+    width: 90%;
+    margin: 20px;
+    float: left;
+}
+.progress-title{
+    text-transform: uppercase;
+    color: var(--header-color);
+    font-weight: bold;
+    font-size: 22px;
+}
+.progress-bar{
+    background-color: var(--light-gray);
+    width: 100%;
+    height: 10px;
+}
+.progress-indicator{
+    background-color: var(--color);
+    height: 10px;
+}
+
+/* PROGRESS BAR COLUMNS - GRID */
+
+.container {  display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "progressLeftCol progressRightCol";
+  }
+  
+  .progressLeftCol { grid-area: progressLeftCol; }
+  .progressRightCol { grid-area: progressRightCol; }
+  
