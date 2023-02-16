@@ -181,34 +181,84 @@ Object.entries(cars2).forEach(function(item){
 */
 
 
-let columns = 10
+let columns = 15
 let rows = 10
 
-for (let colIndex = 0; colIndex <= columns; colIndex++) 
+
+function drawMultiplyTable()
 {
+    let td = ''
+    let tr = ''
+
     for (let rowIndex = 0; rowIndex <= rows; rowIndex++) 
     {
-        console.log(colIndex + '*' + rowIndex + '=' + (colIndex * rowIndex))
+        td = ''
+        for (let colIndex = 0; colIndex <= columns; colIndex++) 
+        {
+            //console.log(colIndex + '*' + rowIndex + '=' + (colIndex * rowIndex))
+            td += generateHtmlTag('td', (colIndex * rowIndex)).outerHTML
+        }
+        tr += generateHtmlTag('tr', td).outerHTML
     }
+    let table = generateHtmlTag('table', tr)
+    table.classList.add('table', 'table-bordered')
+
+    let multiplyTable = document.getElementById('multiplyTable')
+    multiplyTable.innerHTML = table.outerHTML
 }
+drawMultiplyTable()
 
-
-let multiplyTable = document.getElementById('multiplyTable')
-multiplyTable.innerHTML = '<b>Hello<b> from <span style="color:red;">javascript</span>'
-
+/*
 function generateTD(value){
     // var 1 
-    let td = '<td class="class1 class2">' + value + '</td>'
+    //let td = '<td class="class1 class2">' + value + '</td>'
     // var 2
     let el = document.createElement('td')
-    el.classList.add('class1', 'class2')
+    //el.classList.add('class1', 'class2')
     //el.style.backgroundColor = 'red'
     el.innerText = value
 
     // return el.outerHTML // -> html
     return el
-
 }
+
+function generateTR(value)
+{
+    let el = document.createElement('tr')
+    el.innerHTML = value // <tr><td>value</td></tr>
+    return el
+}
+
+function generateTABLE(value)
+{
+    let el = document.createElement('table')
+    el.innerHTML = value // <table><tr><td>value</td></tr></table>
+    return el
+}*/
+
+function generateHtmlTag(tagName, value, options = {}){
+    let el = document.createElement(tagName)
+    el.innerHTML = value
+
+    if (options !== undefined){
+        Object.entries(options).forEach(function(option){
+            el.setAttribute(option[0], option[1])
+        })
+    }
+
+    return el
+}
+
+/*
+let td = ''
+
+for (let index = 0; index < columns; index++) {
+    td += generateHtmlTag('td', index).outerHTML
+}
+console.log(td)
+*/
+
+
 /*
 let td = generateTD('Hello')
 td.classList.remove('class2')
@@ -217,3 +267,29 @@ console.log(td.outerHTML)
 td.classList.add('class2')
 console.log(td.outerHTML)
 */
+
+let slctColumns = document.getElementById('slctColumns')
+let slctRows = document.getElementById('slctRows')
+let btnGenerate = document.getElementById('btnGenerate')
+
+for (let index = 1; index <= columns; index++) {
+    //slctColumns.innerHTML += generateHtmlTag('option', index, {value: index, class: 'a' + index}).outerHTML    
+    if (index == 5) {
+        slctColumns.innerHTML += generateHtmlTag('option', index, {value: index, class: 'text-primary', style: 'font-weight: bold;'}).outerHTML   
+    } else {
+        slctColumns.innerHTML += generateHtmlTag('option', index, {value: index, class: 'a' + index}).outerHTML   
+    }
+}
+
+for (let index = 1; index <= rows; index++) {
+    slctRows.innerHTML += generateHtmlTag('option', index, {value: index}).outerHTML    
+}
+
+
+btnGenerate.addEventListener('click', function(myEvent){
+    //console.log(slctColumns.value)
+    columns = slctColumns.value
+    rows = slctRows.value
+
+    drawMultiplyTable()
+})

@@ -4,17 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-  
+    <title>Multiply Table</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
     
 DOM - document object model 
+<form>
+    <div class="mb-3">
+        <label for="slctColumns" class="form-label">Columns</label>
+        <select class="form-select" id="slctColumns"></select>
+    </div>
+
+    <div class="mb-3">
+        <label for="slctRows" class="form-label">Rows</label>
+        <select class="form-select" id="slctRows"></select>
+    </div>
+
+    <button type="button" id="btnGenerate" class="btn btn-primary">generate</button>
+</form>
+
+<br><br>
 
 <div id="multiplyTable"></div>
-<table>
-    <tr><td class="class1 class2" style="background-color: red;">Hello</td></tr>
-</table>
+
 <!--
 <table border="1">
     <tr>
