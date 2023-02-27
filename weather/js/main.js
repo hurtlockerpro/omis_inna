@@ -3,7 +3,7 @@
 
 let apiKey = 'e94a06c22c14c9ab3059f89372eb2541'
 let waetherUrl = 'https://api.openweathermap.org/data/2.5/weather'
-
+let units = 'metric'
 
 let city = 'Tallinn'
 let limit = 1
@@ -57,7 +57,7 @@ getCityLatLon()
 
 function getWeather(){
 
-    waetherUrl = waetherUrl + '?lat=' + lat + '&lon=' + lon + '&appid=' +  apiKey
+    waetherUrl = waetherUrl + '?lat=' + lat + '&lon=' + lon + '&appid=' +  apiKey + '&units=' + units
     fetch(waetherUrl)
     .then(response => {
         let result = response.json()
@@ -72,6 +72,28 @@ function getWeather(){
         if (data.message != undefined && data.cod == 401) {
             showAlert(data.message)
         } 
+
+        let cityName = document.getElementById('cityName')
+        let cityTemp = document.getElementById('cityTemp')
+        let weatherIcon = document.getElementById('weatherIcon')
+        let weatherDescription = document.getElementById('weatherDescription')
+
+        cityName.innerText = data.name
+        cityTemp.innerText = data.main.temp
+
+        let description = ''
+        data.weather.forEach((item, index) => {
+            description += item.description
+            if (data.weather.length - 1 < index) description += ', '
+        })
+
+        weatherDescription.innerText = description
+
+        let iconurl = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png"
+        console.log(iconurl)
+        weatherIcon.src = iconurl
+        
+
     })
     .catch((error) => {
         
@@ -99,3 +121,24 @@ fetch('http://example.com/movies.json')
     return response.json()
   }
   */
+
+  let flexSwitchCheckChecked = document.getElementById('flexSwitchCheckChecked')
+  let tempTitle = document.getElementById('tempTitle')
+
+  flexSwitchCheckChecked.addEventListener('change', function(event){
+        console.log("is checked: " + flexSwitchCheckChecked.checked)
+
+        // units=metric
+        // units=imperial 
+        if (flexSwitchCheckChecked.checked == true)
+        {
+            units = 'metric'
+            tempTitle.innerText = 'C'
+        } else {
+            units = 'imperial'
+            tempTitle.innerText = 'F'
+        }
+
+        getCityLatLon()
+
+  })
